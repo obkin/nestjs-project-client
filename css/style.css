@@ -1,0 +1,131 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #9f9999;
+  box-sizing: border-box;
+}
+body .form {
+  width: 100%;
+  height: 500px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .form_block {
+  width: 500px;
+  background-color: #715f5f;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+body .form_block-close {
+  text-align: right;
+  margin: 15px;
+  font-size: 24px;
+  color: #211f1f;
+}
+body .form_block-close-icon {
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+body .form_block-close-icon:hover {
+  transition: 0.4s;
+  transform: scale(1.2);
+}
+body .form_img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+body .form_img_amazon {
+  width: 200px;
+  height: 50px;
+  transition-duration: 0.4s;
+}
+body .form_img_amazon:hover {
+  transition: 0.4s;
+  transform: scale(1.01);
+}
+body .form_send {
+  display: block;
+}
+body .form_name {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+body .form_name_input {
+  width: 200px;
+  font-size: 13px;
+  padding: 5px;
+  border: 1px solid #000000;
+  background: #e2dddd;
+  border-radius: 8px;
+  transition-duration: 0.2s;
+}
+body .form_name_input:hover {
+  transition: 0.2s;
+  transform: scale(1.05);
+}
+body .form_phone {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+}
+body .form_phone_input {
+  width: 200px;
+  font-size: 13px;
+  padding: 5px;
+  border: 1px solid #000000;
+  background: #e2dddd;
+  border-radius: 8px;
+  transition-duration: 0.2s;
+}
+body .form_phone_input:hover {
+  transition: 0.2s;
+  transform: scale(1.05);
+}
+body .form_send-btn {
+  width: 100px;
+  height: 30px;
+  color: #e2dddd;
+  background-color: #211f1f;
+  border-radius: 25px;
+  text-align: center;
+  margin: 25px auto;
+  padding: 5px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+body .form_send-btn:hover {
+  transition: 0.4s;
+  transform: scale(1.05);
+}
+body .form_done {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+body .form_done-block {
+  text-align: center;
+}
+body .form_done-img {
+  margin-top: -10px;
+  font-size: 34px;
+  color: #211f1f;
+}
+body .form_done-text {
+  font-family: "Caprasimo", cursive;
+  color: #211f1f;
+  margin: 35px;
+}
+
+/*# sourceMappingURL=style.css.map */
