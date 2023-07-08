@@ -10,14 +10,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // --- User data validation ---
 
-    let dataStatus = false;
+    let nameStatus = false;
+    let phoneStatus = false;
 
     inputName.addEventListener('input', () => {
         if (!inputName.value.match(/^[A-Za-z]+$/g)) {
             inputName.style.boxShadow = '0 0 5px red, 0 0 5px red';
-            dataStatus = false;
+            nameStatus = false;
         } else {
-            dataStatus = true;
+            nameStatus = true;
             inputName.style.boxShadow = 'none';
         } 
     });
@@ -25,35 +26,69 @@ window.addEventListener('DOMContentLoaded', () => {
     inputTel.addEventListener('input', () => {
         if (!inputTel.value.match(/^\d{10}$/g)) {
             inputTel.style.boxShadow = '0 0 5px red, 0 0 5px red';
-            dataStatus = false;
+            phoneStatus = false;
         } else {
-            dataStatus = true;
+            phoneStatus = true;
             inputTel.style.boxShadow = 'none';
         } 
     });
 
 // --- Send user data to API ---
 
-    const requerstURL = 'http://localhost:3000';
+    const requerstURL = 'http://localhost:3000/user/postdata';
 
-    formBtn.addEventListener('click', () => {
+    function sendData() {
+
         const userName = document.getElementsByTagName("input")[0].value;
         const userTel = document.getElementsByTagName("input")[1].value;
-        if (dataStatus === true) {
-            postData(userName, userTel);
+
+        const userData = {
+            name: userName,
+            tel: userTel
+        };
+
+        if (nameStatus === false && phoneStatus === true) {
+            inputName.style.boxShadow = '0 0 5px red, 0 0 5px red';
+        } else if (nameStatus === true && phoneStatus === false) {
+            inputTel.style.boxShadow = '0 0 5px red, 0 0 5px red';
+        } else if (nameStatus === true && phoneStatus === true) {
+            postData(requerstURL, userData)
+            .then(data => {
                 formSend.style.display = 'none';
-                formDone.style.display = 'block';
-                setTimeout(() => {
-                    hideModal();
-                }, 5000);
+                formDone.style.display = 'flex';
+                console.log(userData);                  // console.log
+                console.log(data);                      // console.log
+            }).catch((err) => {
+                console.log('Error:', err)
+            });
         } else {
             console.log('send error: invalid data');
         }
+    }
+
+    async function postData (url, data)  {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        });
+    
+        return await res;
+    };
+
+// --- Send data buttons ---
+
+    formBtn.addEventListener('click', () => {
+        sendData();
     });
 
-    function postData(name, tel) {
-        console.log(name, tel)
-    }
+    document.addEventListener('keyup', event => {
+        if (event.code === 'Enter') {
+            sendData();
+        }
+    });
 
 // --- Hide modal / show modal---
 
